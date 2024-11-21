@@ -1,6 +1,9 @@
+# Found at: https://github.com/organizr/docker-base/pkgs/container/base
 ARG BASE_IMAGE
-ARG ARCH
-FROM ${BASE_IMAGE:-ghcr.io/organizr/base:2023-11-30_13}-${ARCH:-linux-amd64}
+ARG VERSION=2024-03-08_20
+ARG ARCH=linux-arm64
+
+FROM ${BASE_IMAGE:-ghcr.io/organizr/base}:${VERSION}-${ARCH}
 
 LABEL maintainer="christronyxyocum,Roxedus"
 
