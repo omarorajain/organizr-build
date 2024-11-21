@@ -1,2 +1,2 @@
-docker build -t omaj/updated-docker-organizr .
-docker push omaj/updated-docker-organizr
+docker build -t omaj/organizr-build .
+docker push omaj/organizr-build
