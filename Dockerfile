@@ -3,9 +3,9 @@ FROM omaj/organizr-base:latest
 
 ENV fpm="false" branch="v2-master"
 
-# add local files
+# Add local files
 COPY root/ /
 
-# ports and volumes
+# Expose ports and volumes
 EXPOSE 80
 VOLUME /config
