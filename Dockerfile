@@ -1,5 +1,5 @@
 # Found at: https://github.com/organizr/docker-base/pkgs/container/base
-FROM omaj/organizr-base:test
+FROM omaj/organizr-base:edge
 
 ENV fpm="false" branch="v2-master"
 
