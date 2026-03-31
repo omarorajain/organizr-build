@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bash
+#!/command/with-contenv bash
 # shellcheck shell=bash
 
 if [ "$branch" == "v2-develop" ] || [ "$branch" == "develop" ] || [ "$branch" == "dev" ]; then
@@ -68,7 +68,7 @@ elif [[ -d /config/www/organizr/.git ]]; then
   git reset --hard origin/"$(cat /Docker.txt)"
   git pull
   git rev-parse HEAD >/config/www/organizr/Github.txt
-elif ! ping -c 1 https://github.com &>/dev/null; then
+elif ! ping -c 1 github.com &>/dev/null; then
   echo "Git clone failed, but github is resolvable"
 else
   echo "Git clone failed"
@@ -76,7 +76,7 @@ fi
 
 if [ ! "$branch" == "manual" ]; then
   # Make sure the config.php file is using the correct branch
-  if [[ -a /config/www/organizr/data/config/config.php ]]; then
+  if [[ -e /config/www/organizr/data/config/config.php ]]; then
     sed -i "s/'branch' => '[^']*',/'branch' =\> '$(cat /Docker.txt)',/" /config/www/organizr/data/config/config.php
   fi
   sed -i "s/'branch' => '[^']*',/'branch' =\> '$(cat /Docker.txt)',/" /config/www/organizr/api/config/default.php
@@ -84,7 +84,7 @@ if [ ! "$branch" == "manual" ]; then
     echo "Cron already added..."
   else
     echo "Adding cron now..."
-    echo "* * * * *  /bin/bash /org/cron.sh" >>/etc/crontabs/root
+    echo "* * * * * /bin/bash /org/cron.sh" >>/etc/crontabs/root
   fi
 fi
 
